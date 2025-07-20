@@ -1,11 +1,11 @@
 import React from 'react';
 import "./category.css";
-const Category = () => {
+const Categories = () => {
     return (
         <div>
-            
+            <h2>cat</h2>
         </div>
     );
 };
 
-export default Category;
+export default Categories;

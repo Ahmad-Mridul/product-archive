@@ -3,7 +3,7 @@ import React from 'react';
 const Colors = () => {
     return (
         <div>
-            
+            <h2>colors</h2>
         </div>
     );
 };
