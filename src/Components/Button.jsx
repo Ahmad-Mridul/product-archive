@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Button = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return <button className="btns">All Products</button>;
 };
 
 export default Button;

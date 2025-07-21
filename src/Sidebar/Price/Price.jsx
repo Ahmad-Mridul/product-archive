@@ -1,9 +1,12 @@
-import React from 'react';
+import Input from "../../Components/Input";
 import "./price.css";
 const Price = () => {
     return (
         <div>
-            <h2>price</h2>
+            <h2 className='sidebar-title'>Prices</h2>
+            <div className="">
+                <Input/>
+            </div>
         </div>
     );
 };
