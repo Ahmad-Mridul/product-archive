@@ -67,9 +67,9 @@ function App() {
             handleChange={handleChange}
             
             />
-            <Nav />
-            <Recommended />
-            <Products />
+            <Nav query={query} handleInputChange={handleInputChange} />
+            <Recommended handleClick={handleClick} />
+            <Products result={result} />
         </>
     );
 }

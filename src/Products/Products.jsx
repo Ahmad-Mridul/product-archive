@@ -3,11 +3,11 @@ import "./products.css";
 import { BsFillBagHeartFill } from "react-icons/bs";
 import Card from "../Components/Card";
 
-const Products = () => {
+const Products = ({result}) => {
     return (
         <>
             <section className="card-container">
-                <Card/>
+                {result}
             </section>
             
         </>
