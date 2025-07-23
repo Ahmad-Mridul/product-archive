@@ -7,10 +7,9 @@ const Card = ({
     reviews,
     prevPrice,
     newPrice,
-    company,
-    color,
-    category,
 }) => {
+    console.log(newPrice);
+    
     return (
         <section className="card">
             <img
@@ -30,7 +29,7 @@ const Card = ({
                 </section>
                 <section className="card-price">
                     <div className="price">
-                        <del>{prevPrice}</del> {newPrice}
+                        <p><del>{prevPrice}</del> {newPrice}</p>
                     </div>
                     <div className="bag">
                         <BsFillBagHeartFill className="bag-icon" />

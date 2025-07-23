@@ -1,73 +1,78 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
-import Nav from "./Navigation/Nav";
+import products from "./Data/data"
+
+import "./index.css";
+import SideBar from './Sidebar/SideBar';
 import Products from "./Products/Products";
-import Recommended from "./Recommended/Recommended";
-import SideBar from "./Sidebar/SideBar";
-import products from "./Data/data";
 import Card from "./Components/Card";
+import Recommended from './Recommended/Recommended';
+import Navigation from "./Navigation/Nav"
 function App() {
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [query, setQuery] = useState("");
 
-    // ic radio filter
-    const handleChange = (event) => {
-        setSelectedCategory(event.target.value);
-    };
-    // ic buttons filter
-    const handleClick = (event) => {
-        setSelectedCategory(event.target.value);
-    };
-    // ic input filter
+    // ----------- Input Filter -----------
+    const [query, setQuery] = useState("");
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
     };
 
-    // ic filtered products according to title query
-    const filteredItems = products.filter((product) =>
-        product.title.toLowerCase().indexOf(query.toLowerCase() !== -1)
+    const filteredItems = products.filter(
+        (product) =>
+            product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
     );
 
-    // ic query function
-    const filteredData = (products, selected, query) => {
+    // ----------- Radio Filtering -----------
+    const handleChange = (event) => {
+        setSelectedCategory(event.target.value);
+    };
+
+    // ------------ Button Filtering -----------
+    const handleClick = (event) => {
+        setSelectedCategory(event.target.value);
+    };
+
+    function filteredData(products, selected, query) {
         let filteredProducts = products;
 
-        // ic input query
+        // Filtering Input Items
         if (query) {
             filteredProducts = filteredItems;
         }
 
-        // ic selected query
+        // Applying selected filter
         if (selected) {
             filteredProducts = filteredProducts.filter(
-                ({ title, category, company, color, newPrice }) =>
-                    title === selected ||
+                ({ category, color, company, newPrice, title }) =>
                     category === selected ||
-                    company === selected ||
                     color === selected ||
-                    newPrice === selected
+                    company === selected ||
+                    newPrice === selected ||
+                    title === selected
             );
         }
-        return filteredProducts.map(({img,title,star,reviews,prevPrice},idx)=>(
-            <Card
-            key={idx}
-            img={img}
-            title={title}
-            star={star}
-            reviews={reviews}
-            prevPrice={prevPrice}
-            />
-        ))
-    };
-    const result = filteredData(products,selectedCategory,query);
+
+        return filteredProducts.map(
+            ({ img, title, star, reviews, prevPrice, newPrice }) => (
+                <Card
+                    key={Math.random()}
+                    img={img}
+                    title={title}
+                    star={star}
+                    reviews={reviews}
+                    prevPrice={prevPrice}
+                    newPrice={newPrice}
+                />
+            )
+        );
+    }
+
+    const result = filteredData(products, selectedCategory, query);
+
     return (
         <>
-            <SideBar 
-            handleChange={handleChange}
-            
-            />
-            <Nav query={query} handleInputChange={handleInputChange} />
+            <SideBar handleChange={handleChange} />
+            <Navigation query={query} handleInputChange={handleInputChange} />
             <Recommended handleClick={handleClick} />
             <Products result={result} />
         </>
