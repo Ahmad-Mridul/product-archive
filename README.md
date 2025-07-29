@@ -22,3 +22,4 @@ This project is a dynamic and responsive product archive page that allows users 
 - **Styling**: Vanila CSS
 - **State Management**: useState
 
+---------------------------------------------------------------
